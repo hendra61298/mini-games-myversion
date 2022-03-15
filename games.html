@@ -17,7 +17,6 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         />
         <script src="https://kit.fontawesome.com/cd87ce225a.js" crossorigin="anonymous"></script>
-
     <style>
       .body-style {
         background-color: antiquewhite;
@@ -68,6 +67,15 @@
         color:chocolate;
         font-size: 15px;
         text-align: center;
+      
+      }
+      .pertandingan-style-1{
+        margin-top: 20px;
+        font-style: oblique;
+        color:chocolate;
+        font-size: 30px;
+        text-align: center;
+      
       }
       .hasil-style{
         margin-top: 20px;
@@ -79,8 +87,6 @@
         text-shadow: 2px 2px 2px red;
       }
     </style>
-
-
   <body class="body-style">
     <div class="container-fluid">
       <div class="row">
@@ -93,20 +99,20 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4 kota-jawaban" id="batu" data-value="batu">
+        <div class="col-sm-4 kota-jawaban" id="batu" data-value="✊">
           <i class="fa-solid fa-hand-back-fist icon-style"></i>
         </div>
         <div
           class="col-sm-4 kota-jawaban font-color"
           id="gunting"
-          data-value="gunting"
+          data-value="✌"
         >
         <i class="fa-solid fa-hand-scissors  icon-style"></i>
         </div>
         <div
           class="col-sm-4 kota-jawaban font-color"
           id="kertas"
-          data-value="kertas"
+          data-value="✋"
         >
         <i class="fa-solid fa-hand icon-style"></i>
         </div>
@@ -135,100 +141,38 @@
         });
       });
 
-      function games(myValue) {
-        var botValue = ["batu", "gunting", "kertas"];
-        var randomValue = botValue[Math.floor(Math.random() * botValue.length)];
+      function showPemenang(myValue,randomValue,text){
+        (function (el) {
+            setTimeout(function () {
+              el.children().remove('div');
+              $('#hasil').append(`<div class="pertandingan-style-1" >${myValue} Vs ${randomValue}</div>
+              <div class="hasil-style">${text}</div>`)
+            }, 2000);
+        }($('#hasil').append('<div class="pertandingan-style">Please wait...</div>')));
+      }
 
-        if (myValue == "batu" && randomValue == "batu") {
-          console.log("Tidak ada yang menang");
-          $('#hasil').html('')
-          (function (el) {
-              setTimeout(function () {
-                el.children().remove('div');
-                $('#hasil').append(`<div class="pertandingan-style" >${myValue} Vs ${randomValue}</div>
-                <div class="hasil-style">TIDAK ADA PEMENANG</div>`)
-              }, 2000);
-          }($('#hasil').append('<div class="pertandingan-style">Please wait...</div>')));
-        } else if (myValue == "batu" && randomValue == "gunting") {
-          console.log("Saya Menang");
-          $('#hasil').html('')
-            (function (el) {
-              setTimeout(function () {
-                el.children().remove('div');
-                $('#hasil').append(`<div class="pertandingan-style" >${myValue} Vs ${randomValue}</div>
-            <div class="hasil-style">SAYA WINNER</div>`)
-              }, 2000);
-          }($('#hasil').append('<div class="pertandingan-style">Please wait...</div>')));
-        } else if (myValue == "batu" && randomValue == "kertas") {
-          console.log("Bot menang");
-          $('#hasil').html('')
-          (function (el) {
-              setTimeout(function () {
-                el.children().remove('div');
-                $('#hasil').append(`<div class="pertandingan-style" >${myValue} Vs ${randomValue}</div>
-            <div class="hasil-style">BOT WINNER</div>`)
-              }, 2000);
-          }($('#hasil').append('<div class="pertandingan-style">Please wait...</div>')));
-        } else if (myValue == "gunting" && randomValue == "batu") {
-          console.log("Bot menang");
-          $('#hasil').html('')
-          (function (el) {
-              setTimeout(function () {
-                el.children().remove('div');
-                $('#hasil').append(`<div class="pertandingan-style" >${myValue} Vs ${randomValue}</div>
-            <div class="hasil-style">BOT WINNER</div>`)
-              }, 2000);
-          }($('#hasil').append('<div class="pertandingan-style">Please wait...</div>')));
-        } else if (myValue == "gunting" && randomValue == "gunting") {
-          console.log("Tidak ada yang menang");
-          $('#hasil').html('')
-          (function (el) {
-              setTimeout(function () {
-                el.children().remove('div');
-                $('#hasil').append(`<div class="pertandingan-style" >${myValue} Vs ${randomValue}</div>
-                <div class="hasil-style">TIDAK ADA PEMENANG</div>`)
-              }, 2000);
-          }($('#hasil').append('<div class="pertandingan-style">Please wait...</div>')));
-        } else if (myValue == "gunting" && randomValue == "kertas") {
-          console.log("Saya menang");
-          $('#hasil').html('')
-          (function (el) {
-              setTimeout(function () {
-                el.children().remove('div');
-                $('#hasil').append(`<div class="pertandingan-style" >${myValue} Vs ${randomValue}</div>
-            <div class="hasil-style">SAYA WINNER</div>`)
-              }, 2000);
-          }($('#hasil').append('<div class="pertandingan-style">Please wait...</div>')));
-        } else if (myValue == "kertas" && randomValue == "batu") {
-          console.log("Saya menang");
-          $('#hasil').html('')
-          (function (el) {
-              setTimeout(function () {
-                el.children().remove('div');
-                $('#hasil').append(`<div class="pertandingan-style" >${myValue} Vs ${randomValue}</div>
-            <div class="hasil-style">SAYA WINNER</div>`)
-              }, 2000);
-          }($('#hasil').append('<div class="pertandingan-style">Please wait...</div>')));
-        } else if (myValue == "kertas" && randomValue == "gunting") {
-          console.log("Bot menang");
-          $('#hasil').html('')
-          (function (el) {
-              setTimeout(function () {
-                el.children().remove('div');
-                $('#hasil').append(`<div class="pertandingan-style" >${myValue} Vs ${randomValue}</div>
-            <div class="hasil-style">BOT WINNER</div>`)
-              }, 2000);
-          }($('#hasil').append('<div class="pertandingan-style">Please wait...</div>')));
-        } else {
-          console.log("Tidak ada yang menang");
-          $('#hasil').html('')
-          (function (el) {
-              setTimeout(function () {
-                el.children().remove('div');
-                $('#hasil').append(`<div class="pertandingan-style" >${myValue} Vs ${randomValue}</div>
-                <div class="hasil-style">TIDAK ADA PEMENANG</div>`)
-              }, 2000);
-          }($('#hasil').append('<div class="pertandingan-style">Please wait...</div>')));
+      function games(myValue) {
+        var botValue = ["✊", "✌", "✋"];
+        var randomValue = botValue[Math.floor(Math.random() * botValue.length)];
+        $('#hasil').html('');
+        if (myValue == "✊" && randomValue == "✊") {
+          showPemenang(myValue, randomValue, "TIDAK ADA PEMENANG");
+        } else if (myValue == "✊" && randomValue == "✌") {
+          showPemenang(myValue, randomValue, "SAYA WINNER");
+        } else if (myValue == "✊" && randomValue == "✋") {
+          showPemenang(myValue, randomValue, "BOT WINNER");
+        } else if (myValue == "✌" && randomValue == "✊") {
+          showPemenang(myValue, randomValue, "BOT WINNER");
+        } else if (myValue == "✌" && randomValue == "✌") {     
+          showPemenang(myValue, randomValue, "TIDAK ADA PEMENANG");
+        } else if (myValue == "✌" && randomValue == "✋") {   
+          showPemenang(myValue, randomValue, "SAYA WINNER");
+        } else if (myValue == "✋" && randomValue == "✊") {   
+          showPemenang(myValue, randomValue, "SAYA WINNER");
+        } else if (myValue == "✋" && randomValue == "✌") {     
+          showPemenang(myValue, randomValue, "BOT WINNER");
+        } else {    
+          showPemenang(myValue, randomValue, "TIDAK ADA PEMENANG");
         }
       }
     </script>
